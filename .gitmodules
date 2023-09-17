@@ -1,0 +1,6 @@
+[submodule "scalable-ums-backend"]
+	path = scalable-ums-backend
+	url = git@github.com:thanatadcs/scalable-ums-backend.git
+[submodule "scalable-ums-frontend"]
+	path = scalable-ums-frontend
+	url = git@github.com:thanatadcs/scalable-ums-frontend.git
