@@ -8,17 +8,24 @@ services:
     networks:
       - ums-user-facing
       - ums-back-office
+    environment:
+      UMS_DB_NAME: ums 
+      UMS_DB_USERNAME: dev 
+      UMS_DB_PASSWORD: devpass 
+      UMS_DB_IP: db
     depends_on:
-      - ums-db
-  ums-db:
+      - db
+    restart: always
+  db:
     image: mariadb:11
     environment:
+      MARIADB_DATABASE: ums
       MARIADB_USER: dev
       MARIADB_PASSWORD: devpass 
       MARIADB_ROOT_PASSWORD: mypass
     networks:
       - ums-back-office
-  ums-proxy:
+  proxy:
     image: nginx:1.21
     ports:
       - "8080:80"
