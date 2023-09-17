@@ -1,0 +1,5 @@
+services:
+  ums-frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
