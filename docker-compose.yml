@@ -3,6 +3,10 @@ services:
     build: ./frontend
     ports:
       - "8080:80"
+  ums-backend:
+    build: ./backend
+    ports:
+      - "3000:8080"
   ums-db:
     image: mariadb:11
     ports:
