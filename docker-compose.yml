@@ -15,3 +15,7 @@ services:
       MARIADB_USER: dev
       MARIADB_PASSWORD: devpass 
       MARIADB_ROOT_PASSWORD: mypass
+  ums-proxy:
+    image: nginx:1.21
+    ports:
+      - "8080:80"
