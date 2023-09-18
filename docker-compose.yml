@@ -37,7 +37,7 @@ services:
       - ums-frontend
       - ums-backend
     volumes:
-      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+      - ./proxy/default.conf:/etc/nginx/conf.d/default.conf
 networks:
   ums-user-facing:
   ums-back-office:
