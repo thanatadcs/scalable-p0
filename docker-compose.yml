@@ -11,22 +11,27 @@ services:
     environment:
       UMS_DB_NAME: ums 
       UMS_DB_USERNAME: dev 
-      UMS_DB_PASSWORD: devpass 
+      UMS_DB_PASSWORD: /run/secrets/db_password
       UMS_DB_IP: db
     depends_on:
       - db
     restart: always
+    secrets:
+      - db_password
   db:
     image: mariadb:11
     environment:
       MARIADB_DATABASE: ums
       MARIADB_USER: dev
-      MARIADB_PASSWORD: devpass 
-      MARIADB_ROOT_PASSWORD: mypass
+      MARIADB_PASSWORD: /run/secrets/db_password
+      MARIADB_ROOT_PASSWORD: /run/secrets/db_root_password
     networks:
       - ums-back-office
     volumes:
       - db-data:/var/lib/mysql
+    secrets:
+      - db_password
+      - db_root_password
   proxy:
     image: nginx:1.21
     ports:
@@ -43,3 +48,8 @@ networks:
   ums-back-office:
 volumes:
   db-data:
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  db_root_password:
+    file: ./secrets/db_root_password.txt
